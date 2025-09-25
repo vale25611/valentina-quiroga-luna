@@ -1,11 +1,6 @@
 body {
     background-color: #DDC9B4;
 }
-.libertinus-keyboard-regular {
-  font-family: "Libertinus Keyboard", system-ui;
-  font-weight: 400;
-  font-style: normal;
-}
 
 a {
     color:#7A6C5D ;
@@ -13,28 +8,63 @@ a {
 
 h1{
     color: #C17C74;
-    font-size: 50px;
+    font-size: 60px;
     text-align: center;
-    font-family: "Libertinus Keyboard", system-ui;
+    font-family: "Bitcount Grid Double", system-ui, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h2{
     color: #2A3D45;
     font-size: 25px;
+
 }
 
 ul{
     color: #2A3D45;
-    outline: #2A3D45;
-;
+}
+
+
+
+
+nav {
+    position: sticky;
+    top: 0;
+    background: #DDC9B4;
+    padding: 10px 5px;
 
 }
 
-.experience{
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+  justify-content: space-between;
+}
+
+#experiences{
     margin: 10px;
     border: 2px solid #7A6C5D;
     padding: 10px;
     border-radius: 8px;
+    display: flex;
+    background: #f4ebdf;
+}
+
+#experiences h2{
+    padding: 0 12px ;
+}
+.exp-item{
+  padding: 10px 12px;
+
+}
+
+.exp-date {
+  font-size: 15px;
+  color: #7A6C5D;
 }
 
 p{
