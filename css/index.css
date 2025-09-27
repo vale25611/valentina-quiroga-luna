@@ -1,3 +1,5 @@
+/* ========== Base (Mobile) ========== */
+
 body {
     background-color: #DDC9B4;
 }
@@ -15,17 +17,23 @@ h1{
     font-style: normal;
 }
 
+h1, section {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline: 16px;
+}
+
 h2{
     color: #2A3D45;
     font-size: 25px;
-
+    margin: 24px 0 12px;
+    text-align: left; 
 }
 
 ul{
     color: #2A3D45;
 }
-
-
 
 
 nav {
@@ -37,38 +45,180 @@ nav {
 }
 
 nav ul {
+  max-width: 1100px;
   list-style: none;
   display: flex;
+  flex-wrap: wrap; 
   gap: 1rem;
   padding: 0;
   margin: 0;
-  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  font-size: 0.95rem;
 }
 
-#experiences{
-    margin: 10px;
-    border: 2px solid #7A6C5D;
-    padding: 10px;
-    border-radius: 8px;
-    display: flex;
-    background: #f4ebdf;
+.exp-container {
+  margin: 0 auto 24px;
+  border: 2px solid #7A6C5D;
+  padding: 16px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  background: #f4ebdf;
+  max-width: 1100px;
 }
 
-#experiences h2{
-    padding: 0 12px ;
-}
+
 .exp-item{
-  padding: 10px 12px;
-
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px #00000014;
 }
 
 .exp-date {
-  font-size: 15px;
-  color: #7A6C5D;
+  margin: 0 0 8px;
+  color: #7A6C5D;   font-size: 15px;
+}
+
+.exp-title{
+    margin: 0 0 6px; 
 }
 
 p{
     color: #2A3D45;
 }
+.connect-list {
+  list-style: none; 
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.connect-list li {
+  margin: 0;
+}
+
+.connect-list a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #7A6C5D;
+  border-radius: 999px;
+  text-decoration: none;
+  background: #f4ebdf;
+  color: #2A3D45;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+/* ========== Tablet ========== */
+@media (min-width: 768px) {
+ 
+  /* Change headings size & color */
+  h1 {
+    font-size: 72px;
+    letter-spacing: 0.5px;
+  }
+  h2 {
+    font-size: 28px;
+    color: #233339;
+  }
+
+  /* Nav layout & spacing tweaks */
+  nav {
+    padding: 14px 16px;
+  }
+  nav ul {
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  /* Bigger cards & spacing for experiences: */
+  #experiences {
+    padding: 20px;
+    border-width: 3px;
+  }
+  .exp-item {
+    margin-bottom: 12px;
+    background: #fff;
+  }
+
+  /* Connect list */
+  .connect-list {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
 
 
+}
+/* ========== Desktop  ========== */
+
+@media (min-width: 1024px) {
+  /* Change headings size & color */
+  h1 {
+    font-size: 84px;
+    font-weight: 400;
+  }
+  h2 {
+    font-size: 32px;
+    letter-spacing: 0.25px;
+  }
+
+  /* Nav spread items & add max-width wrapper feel */
+  nav {
+    padding: 16px 24px;
+    border-bottom: 1px solid #7A6C5D33;
+  }
+  nav ul {
+    gap: 2rem;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Experiences → GRID */
+  #experiences {
+    display: grid;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  #experiences h2 { 
+    grid-column: 1 / -1; 
+  }
+
+  .exp-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+
+  .exp-item {
+    padding: 14px;
+    box-shadow: 0 2px 6px #00000010;
+  }
+  .exp-title { margin: 0 0 6px; }
+  .exp-date  { margin: 0 0 8px; }
+
+  /* Projects list as a responsive grid */
+  #projects ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  /* Connect layout */
+  .connect-list a {
+    padding: 8px 12px;
+    border: 1px solid #7A6C5D;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+}
