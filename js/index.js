@@ -85,3 +85,57 @@ if (messageForm) {
     messageForm.reset();
   });
 }
+
+const GITHUB_USERNAME = "vale25611";
+
+fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+
+    const repositories = data;
+    console.log("repositories:", repositories);
+
+
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+
+
+    projectList.innerHTML = "";
+
+
+    for (let i = 0; i < repositories.length; i++) {
+      const repo = repositories[i];
+
+      const project = document.createElement("li");
+
+      // Option A: just the name
+      // project.textContent = repo.name;
+
+      // Option B (nicer): clickable link to the repo
+      const link = document.createElement("a");
+      link.href = repo.html_url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = repo.name;
+
+      project.appendChild(link);
+      projectList.appendChild(project);
+    }
+  })
+  .catch((err) => {
+
+    console.error(err);
+
+    const projectSection = document.getElementById("projects");
+    const projectList = projectSection.querySelector("ul");
+
+    const errorItem = document.createElement("li");
+    errorItem.textContent = "Sorry—couldn’t load repositories right now.";
+    errorItem.style.color = "#C17C74"; // optional
+    projectList.appendChild(errorItem);
+  });
