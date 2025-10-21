@@ -5,14 +5,17 @@ const footer = document.createElement("footer");
 footer.id = "copyright";
 body.appendChild(footer);
 
+
+// Get the current year
 const today = new Date();
 const thisYear = today.getFullYear();
 
+// Create a <p> element
 const copyright = document.createElement("p");
 copyright.innerHTML =`© ${thisYear} Valentina Quiroga`;
 footer.appendChild(copyright);
 
-
+// Array of skills to display on the page
 const skills = [
   "JavaScript",
   "HTML",
@@ -49,10 +52,12 @@ for(let i = 0; i < skills.length; i++){
 
 const messageForm = document.forms["leave_message"];
 
+// Add submit event listener
 if (messageForm) {
   messageForm.addEventListener("submit", function (event) {
     event.preventDefault();
-
+   
+    // Get user input values and remove whitespace
     const usersName = event.target.usersName.value.trim();
     const usersEmail = event.target.usersEmail.value.trim();
     const usersMessage = event.target.usersMessage.value.trim();
@@ -61,19 +66,20 @@ if (messageForm) {
 
     const messageSection = document.getElementById("messages");
     const messageList = messageSection.querySelector("ul");
-
+    
+    // Create a new message item
     const newMessage = document.createElement("li");
-
-
     newMessage.innerHTML = `
       <a href="mailto:${usersEmail}">${usersName}</a>
       <span> — ${usersMessage}</span>
     `;
 
+    // Add "remove" button
     const removeButton = document.createElement("button");
     removeButton.type = "button";
     removeButton.textContent = "remove";
 
+    // When clicked, remove from list
     removeButton.addEventListener("click", function () {
       const entry = removeButton.parentNode; 
       entry.remove();
@@ -86,6 +92,7 @@ if (messageForm) {
   });
 }
 
+// -------------------- GitHub Projects -------------------- //
 const GITHUB_USERNAME = "vale25611";
 
 fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`)
@@ -113,10 +120,6 @@ fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`)
 
       const project = document.createElement("li");
 
-      // Option A: just the name
-      // project.textContent = repo.name;
-
-      // Option B (nicer): clickable link to the repo
       const link = document.createElement("a");
       link.href = repo.html_url;
       link.target = "_blank";
@@ -136,6 +139,6 @@ fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated`)
 
     const errorItem = document.createElement("li");
     errorItem.textContent = "Sorry—couldn’t load repositories right now.";
-    errorItem.style.color = "#C17C74"; // optional
+    errorItem.style.color = "#C17C74";
     projectList.appendChild(errorItem);
   });
